@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Student Profile</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/skin-black.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="ico/web-fonts-with-css/css/fontawesome-all.css"/>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/app.css" />
+
+    <script src="js/jQuery.min.js" type="text/javascript"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="data/data.js"></script>
+
+</head>
+<body>
+    <div class="content">
+            <div class="nav-tabs-custom">
+                    <ul class="nav nav-tabs pull-right">
+                      <li class="active"><a href="#tab_1-1" data-toggle="tab"> <i class="fa fa-file text-blue"></i> &nbsp; Create</a></li>
+                      <li><a href="#tab_2-2" data-toggle="tab"> <i class="fa fa-eye text-blue"></i> &nbsp; View</a></li>
+                      <li class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                          <i class="fa fa-cog text-blue"></i> &nbsp;Settings <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-edit text-blue"></i> &nbsp; Edit</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-download text-blue"></i> &nbsp; Export</a></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-print text-blue"></i> &nbsp; Print</a></li>
+                          <li role="presentation" class="divider"></li>
+                          <li role="presentation"><a role="menuitem" tabindex="-1" href="#"><i class="fa fa-share text-blue"></i> &nbsp;Share</a></li>
+                        </ul>
+                      </li>
+                      <li class="pull-left header"><i class="fa fa-calendar text-blue"></i> Academic calendar</li>
+                    </ul>
+                    <div class="tab-content">
+                      <div class="tab-pane active" id="tab_1-1">
+                            <div class="row">
+                                    <div class="col-md-3">
+                                            <div class="box box-primary">
+                                                    <div class="box-header with-border">
+                                                      <h4 class="box-title">Events</h4>
+                                                    </div>
+                                                    <div class="box-body" data-row="" id="events-body">
+                                                      <!-- the events -->
+                                                      <div id="external-events" data-row="" ondrop="drop(event)" ondragover="allowDrop(event)">
+                                                        
+                                                      </div>
+                                                    </div>
+                                                    <!-- /.box-body -->
+                                            </div>
+                                            <div class="box box-primary">
+                                                    <div class="box-header with-border">
+                                                      <h3 class="box-title">Create Event</h3>
+                                                    </div>
+                                                    <div class="box-body">
+                                                      <div class="btn-group" style="width: 100%; margin-bottom: 10px;">
+                                                        <!--<button type="button" id="color-chooser-btn" class="btn btn-info btn-block dropdown-toggle" data-toggle="dropdown">Color <span class="caret"></span></button>-->
+                                                        <ul class="fc-color-picker" id="color-chooser">
+                                                          <li><a class="text-aqua" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-light-blue" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-teal" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-yellow" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-orange" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-green" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-lime" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-red" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-purple" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-fuchsia" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-muted" href="#"><i class="fa fa-square"></i></a></li>
+                                                          <li><a class="text-navy" href="#"><i class="fa fa-square"></i></a></li>
+                                                        </ul>
+                                                      </div>
+                                                      <!-- /btn-group -->
+                                                      <div class="input-group">
+                                                        <input id="new-event" type="text" class="form-control" placeholder="Event Title">
+                                        
+                                                        <div class="input-group-btn">
+                                                          <button id="add-new-event" type="button" class="btn btn-primary btn-flat">Add</button>
+                                                        </div>
+                                                        <!-- /btn-group -->
+                                                      </div>
+                                                      <!-- /input-group -->
+                                                    </div>
+                                                  </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="box box-primary">
+                                            <div class="box-header with-border pull-right">
+                                                    <div class="btn-group">
+                                                            <button type="button" class="btn bg-blue"> <i class="fa fa-save"></i> &nbsp;Save</button>
+                                                            <button type="button" class="btn bg-navy"><i class="fa fa-retweet"></i> &nbsp;Reset / Clear</button>
+                                                    </div>
+                                            </div>
+                                            <div class="box-body" style="width:100%;overflow-x:auto;">
+                                                
+                                                <table class="table table-bordered" id="myTable">
+                                                    <thead>
+                                                        <tr>
+                                                            <th> </th>
+                                                            <th nowrap>May 2018</th>
+                                                            <th nowrap>Jun 2018</th>
+                                                            <th nowrap>Jul 2018</th>
+                                                            <th nowrap>Aug 2018</th>
+                                                            <th nowrap>Sep 2018</th>
+                                                            <th nowrap>Oct 2018</th>
+                                                            <th nowrap>Nov 2018</th>
+                                                            <th nowrap>Dec 2018</th>
+                                                            <th nowrap>Jan 2019</th>
+                                                            <th nowrap>Feb 2019</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr data-row="1">
+                                                                <td> <a data-abbr="TO" data-row="1">Teachers Orientation</a></td>
+                                                                <td id="row_1_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_1_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="2">
+                                                                <td> <a data-abbr="PO" data-row="2">Parents orientation</a></td>
+                                                                <td id="row_2_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_2_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="3">
+                                                                <td><a data-abbr="BL" data-row="3">Baseline</a></td>
+                                                                <td id="row_3_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_3_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="4">
+                                                                <td><a data-abbr="BTS" data-row="4">BTS</a></td>
+                                                                <td id="row_4_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_4_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="5">
+                                                                <td><a data-abbr="TA" data-row="5">Teacher Assessment</a></td>
+                                                                <td id="row_5_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_5_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <!---->
+                                                        <tr data-row="6">
+                                                                <td><a data-abbr="TW" data-row="6">Teacher's Workshop</a></td>
+                                                                <td id="row_6_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_6_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="7">
+                                                                <td><a data-abbr="PW" data-row="7">Parent's Workshop</a></td>
+                                                                <td id="row_7_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_7_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="8">
+                                                                <td><a data-abbr="SW" data-row="8">Student's Workshop</a></td>
+                                                                <td id="row_8_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_8_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="9">
+                                                                <td><a data-abbr="SC" data-row="9">Student's Campaigns</a></td>
+                                                                <td id="row_9_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_9_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="10">
+                                                                <td><a data-abbr="SE" data-row="10">Skill Enhancement</a></td>
+                                                                <td id="row_10_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_10_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="11">
+                                                                <td><a data-abbr="AA" data-row="11">Articles</a></td>
+                                                                <td id="row_11_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_11_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="12">
+                                                                <td><a data-abbr="UM" data-row="12">Update Management</a></td>
+                                                                <td id="row_12_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_12_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="13">
+                                                                <td><a data-abbr="MM" data-row="13">Management Meeting</a></td>
+                                                                <td id="row_13_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_13_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                        
+                                                        </tr>
+                                                        <tr data-row="14">
+                                                                <td><a data-abbr="MR" data-row="14">Monthly Report</a></td>
+                                                                <td id="row_14_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_14_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>                        
+                                                        </tr>
+                                                        <tr data-row="15">
+                                                                <td><a data-abbr="CR" data-row="15">Comprehensive Report</a></td>
+                                                                <td id="row_15_1" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_2" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_3" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_4" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_5" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_6" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_7" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_8" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_9" ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                                <td id="row_15_10" ondrop="drop(event)" ondragover="allowDrop(event)"></td>                        
+                                                        </tr>
+
+
+                                                    </tbody>
+                                                </table>
+                        
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                      </div>
+                      <!-- /.tab-pane -->
+                      <div class="tab-pane" id="tab_2-2">
+                            <table class="table table-bordered" id="viewTable">
+                                    <thead>
+                                        <tr>
+                                            <th> </th>
+                                            <th>May 2018</th>
+                                            <th>June 2018</th>
+                                            <th>July 2018</th>
+                                            <th>August 2018</th>
+                                            <th>September 2018</th>
+                                            <th>October 2018</th>
+                                            <th>November 2018</th>
+                                            <th>December 2018</th>
+                                            <th>January 2019</th>
+                                            <th>February 2019</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>Teachers Orientation</td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr>
+                                                <td>Parents orientation</td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="3">
+                                                <td><a data-abbr="BL" data-row="3">Baseline</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="4">
+                                                <td><a data-abbr="BTS" data-row="4">BTS</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="5">
+                                                <td><a data-abbr="TA" data-row="5">Teacher Assessment</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <!---->
+                                        <tr data-row="6">
+                                                <td><a data-abbr="TW" data-row="6">Teacher's Workshop</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="7">
+                                                <td><a data-abbr="PW" data-row="7">Parent's Workshop</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="8">
+                                                <td><a data-abbr="SW" data-row="8">Student's Workshop</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="9">
+                                                <td><a data-abbr="SC" data-row="9">Student's Campaigns</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="10">
+                                                <td><a data-abbr="SE" data-row="10">Skill Enhancement</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="11">
+                                                <td><a data-abbr="AA" data-row="11">Articles</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="12">
+                                                <td><a data-abbr="UM" data-row="12">Update Management</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="13">
+                                                <td><a data-abbr="MM" data-row="13">Management Meeting</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+        
+                                        </tr>
+                                        <tr data-row="14">
+                                                <td><a data-abbr="MR" data-row="14">Monthly Report</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>                        
+                                        </tr>
+                                        <tr data-row="15">
+                                                <td><a data-abbr="CR" data-row="15">Comprehensive Report</a></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td ondrop="drop(event)" ondragover="allowDrop(event)"></td>
+                                                <td  ondrop="drop(event)" ondragover="allowDrop(event)"></td>                        
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                      </div>
+                      <!-- /.tab-pane -->
+                      
+                    </div>
+                    <!-- /.tab-content -->
+                  </div>
+        
+    </div>
+</body>
+<script type="text/javascript">
+    function allowDrop(ev){
+        ev.preventDefault();
+    }
+    function drag(ev){
+        ev.dataTransfer.setData("text",ev.target.id);
+        var rowId = $("#"+ev.target.id).data('row');
+        ev.dataTransfer.setData("row",rowId);
+    }
+    function drop(ev){
+        ev.preventDefault();
+        var data =ev.dataTransfer.getData("text");
+        var rowId  = parseInt(ev.dataTransfer.getData("row"));
+        var targetId = ev.target.id;
+        var dropTarget = parseInt($("#"+targetId).parent().data('row'));
+        if(dropTarget === rowId){
+            //$("#"+ev.target.id).empty();
+            ev.target.appendChild(document.getElementById(data));
+        }else{
+            alert("Impossible !");
+        }
+    }
+
+    $('#myTable tbody tr td:first-child a').on("click",function(){
+        var action = $(this).data('abbr');
+        var rowno  = $(this).data('row');
+        var tasklist = "";
+        if(data.hasOwnProperty(action)){
+            tasklist = data[action];
+            var limit = tasklist.limit;
+
+            createTaskList(tasklist,rowno);
+        }
+        
+    });
+    function createTaskList(list,row){
+        $('#external-events').empty();
+        $('#events-body').attr('data-row',row);
+
+        if(list.hasOwnProperty('events')){
+            $.each(list.events,function(i,v){
+                $('#external-events').append(createDraggableTasks(v));
+            });
+        }
+        
+    }
+    //<div class="external-event bg-green"  draggable="true" ondragstart="drag(event)"id="drag1" style="position: relative;">Term 1</div>
+    function createDraggableTasks(task){
+        var option = {
+            class:"external-event bg-"+task.color,
+            draggable:"true",
+            ondragstart:"drag(event)",
+            id:task.id,
+            text:task.name,
+            "data-row":task.row
+        };
+        var div =$("<div/>",option);
+        return div;
+    }
+
+</script>
+</html>
