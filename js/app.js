@@ -97,11 +97,63 @@ $(".small-box").click(function () {
     if (data.hasOwnProperty(action)) {
         events = data[action];
         $("#modal-service").modal('show');
+        getAcadCalendar();
         createTaskList(events);
     }
     if ($.isEmptyObject(events)) {
         $("#external-events").empty();
+        getAcadCalendar();
         $("#modal-service").modal('show');
 
     }
 });
+
+function getAcadCalendar(){
+    $.ajax({
+        url:"logic/route.php",
+        type:"GET",
+        dataType:"JSON",
+        data:{},
+        success:function(response){
+            console.log(response);
+            buildAcadCalendar(response);
+        }
+
+    });
+
+}
+
+function buildAcadCalendar(data){
+    var target = $("#acad-calendar-container");
+    target.empty();
+    
+    var table = $("<table/>",{class:"table table-bordered",id:"acad-calendar"}).css("overflow","auto");
+    var tbody = $("<tbody/>");
+
+    $.each(data,function(i,e){
+        var tr = $("<tr/>");
+        var first_child = $("<td/>",{class:"calendar-page"});
+        if(e.hasOwnProperty('month')){
+            var month = $("<p/>",{class:"calendar-month",text:e.month});
+            first_child.append(month);
+        }
+        if(e.hasOwnProperty('year')){
+            var year = $("<p/>",{class:"calendar-year",text:e.year});
+            first_child.append(year);
+        }
+        var last_child = $("<td/>",{ondrop:"drop(event)",ondragover:"allowDrop(event)"});//ondrop="drop(event)" ondragover="allowDrop(event)"
+
+        tr.append(first_child).append(last_child);
+        tbody.append(tr);
+    });
+    table.append(tbody);
+    target.append(table);
+    
+}
+function saveAcadCalendar(){
+
+    // add a hidden input when building a calendar with the specific month & year
+    // can be used as an id for saving up the data
+
+    console.log($("#acad-calendar").find(".external-event").closest('tr').find('.calendar-page').html());
+}

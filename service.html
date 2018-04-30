@@ -322,8 +322,8 @@
                                                                             <i class="fa fa-calendar"></i> &nbsp;Calendar</h3>
 
                                                                     </div>
-                                                                    <div class="box-body">
-                                                                        <table class="table table-bordered" style="overflow:auto;">
+                                                                    <div class="box-body" id="acad-calendar-container">
+                                                                        <table class="table table-bordered" style="overflow:auto;" id="acad-calendar">
                                                                             <tbody>
                                                                                 <tr>
                                                                                     <td class="calendar-page">
@@ -450,7 +450,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                                                        <button type="button" class="btn btn-primary">Save changes</button>
+                                                        <button type="button" class="btn btn-primary" onclick="saveAcadCalendar();">Save changes</button>
                                                     </div>
                                                 </div>
                                                 <!-- /.modal-content -->
