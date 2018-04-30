@@ -65,11 +65,11 @@ $('#color-chooser > li > a').click(function (e) {
 });
 
 $('#add-new-event').click(function (e) {
-    e.preventDefault()
+    e.preventDefault();
     //Get value and make sure it is not null
-    var val = $('#new-event').val()
+    var val = $('#new-event').val();
     if (val.length == 0) {
-        return
+        return;
     }
 
     //Create events
@@ -88,7 +88,7 @@ $('#add-new-event').click(function (e) {
     event.append($("<i/>", {
         class: "fa fa-arrows-alt pull-right"
     }));
-    $('#external-events').prepend(event)
+    $('#external-events').prepend(event);
 });
 $(".small-box").click(function () {
     var action = $(this).data('box');
